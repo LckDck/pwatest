@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import usePushNotifications from "./usePushNotifications";
+import usePushNotifications from "./usePushNotification";
 
 function App() {
   const {
@@ -18,21 +18,23 @@ function App() {
   } = usePushNotifications();
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {error && (
+        <section className="app-error">
+          <h2>{error.name}</h2>
+          <p>Error message : {error.message}</p>
+          <p>Error code : {error.code}</p>
+        </section>
+      )}
+      {loading && "Loading, please stand by"}
+      <p>Push notification are {!pushNotificationSupported && "NOT"} supported by your device.</p>
+      <p>
+        User consent to recevie push notificaitons is <strong>{userConsent}</strong>.
+      </p>
+      <button onClick={onClickAskUserPermission}>Ask user permission</button>
+      <button onClick={onClickSusbribeToPushNotification}>Create Notification subscription</button>
+      <button onClick={onClickSendSubscriptionToPushServer}>Send subscription to push server</button>
+      <button onClick={onClickSendNotification}>Send a notification</button>
     </div>
   );
 }
