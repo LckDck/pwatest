@@ -2,6 +2,47 @@
   text-align: center;
 }
 
+.container {
+  align-items: center;
+  justify-content: center;
+}
+
+.img-container {
+  align-items: center; 
+  justify-content: center; 
+  max-width: 300pt;
+}
+
+.duck {
+  display: block;
+  width: 100pt;
+  height: 100pt;
+  margin: 20pt auto 30pt;
+}
+
+.btn {
+  cursor: pointer;
+  display: block;
+  width: 100pt;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto 30pt;
+  padding: 10pt 5pt;
+  border-radius: 5pt;
+  background-color: #ffb400;
+}
+
+.btn:hover {
+  background-color: #ffce00;
+}
+
+.quote {
+  display: block;
+  text-align: center;
+  max-width: 300pt;
+  margin: 0 auto;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

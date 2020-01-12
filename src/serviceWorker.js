@@ -10,6 +10,8 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
 
+
+
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
     // [::1] is the IPv6 localhost address.
@@ -19,6 +21,9 @@ const isLocalhost = Boolean(
       /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
     )
 );
+
+window.self.addEventListener("push", receivePushNotification);
+window.self.addEventListener("notificationclick", openPushNotification);
 
 export function register(config) {
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
@@ -143,18 +148,16 @@ function receivePushNotification(event) {
     badge: "https://spyna.it/icons/favicon.ico",
     actions: [{ action: "Detail", title: "View", icon: "https://via.placeholder.com/128/ff0000" }]
   };
-  event.waitUntil(this.registration.showNotification(title, options));
+  event.waitUntil(window.self.registration.showNotification(title, options));
 }
 
 function openPushNotification(event) {
   console.log("[Service Worker] Notification click Received.", event.notification.data);
   
   event.notification.close();
-  event.waitUntil(this.clients.openWindow(event.notification.data));
+  event.waitUntil(window.self.clients.openWindow(event.notification.data));
 }
 
-this.addEventListener("push", receivePushNotification);
-this.addEventListener("notificationclick", openPushNotification);
 
 export function unregister() {
   if ('serviceWorker' in navigator) {
