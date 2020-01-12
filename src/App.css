@@ -31,6 +31,7 @@
   padding: 10pt 5pt;
   border-radius: 5pt;
   background-color: #ffb400;
+  user-select: none;
 }
 
 .btn:hover {
@@ -40,7 +41,7 @@
 .quote {
   display: block;
   text-align: center;
-  max-width: 300pt;
+  max-width: 600pt;
   margin: 0 auto;
 }
 
